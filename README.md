@@ -1,56 +1,91 @@
-# GitKraken ADE
+# Kepler
 
-> **Private Preview** — GitKraken's ADE is currently in private preview with a limited number of testers.
+> **Public Preview** — Kepler is currently in public preview.
 
-This is the public issue tracker for **GitKraken's ADE**, currently developed under the codename **Kepler**.
+This is the public issue tracker for **Kepler**, GitKraken's agentic development environment (ADE).
 
-## What is GitKraken's ADE?
+## What is Kepler?
 
-GitKraken's ADE is an agentic development environment — a local and remotely accessible-application that puts AI-powered coding agents at the center of how you build software. It's where you plan, run, review, and ship work, with agents as a first-class part of your workflow.
+Kepler is an agentic development environment (ADE) from GitKraken — a desktop app you can also reach remotely from a browser or your phone, that puts AI-powered coding agents at the center of how you build software. It's where you plan, run, review, and ship work, with agents as a first-class part of your workflow.
+
+Kepler is available for macOS, Windows, and Linux.
 
 ### Tasks
 
-The core unit in the ADE is a **Task** — a container for a piece of work. Each Task holds one or more **worktrees** (isolated, ready-to-commit branches), and each worktree can host one or more **agent sessions** (Claude, Codex, or any model via Open Code). Everything related to that work — context, branches, diffs, agent activity — lives inside the Task.
+The core unit in Kepler is a **Task** — a container for a piece of work. A task usually gets its own **worktree** (an isolated, ready-to-commit branch), and can hold one or more **agent sessions**, terminals, notes, and **resources** such as repositories, issues, pull requests, files, and links. Everything related to that work — context, branches, diffs, agent activity — lives inside the task.
+
+A task doesn't need a repository: you can also start one in a plain folder.
 
 ### Starting a Task
 
-There are three ways to create a Task:
+Press **New task** and start with the prompt. Then attach whatever the work needs:
 
-- **From scratch.** New worktree, new agent, blank slate. The fastest path when you know what you want to build.
-- **From an issue.** Pick one or many issues from your connected tracker. The ADE spins up a Task per issue with the issue context already loaded — useful for working through a backlog in parallel.
-- **From a pull request.** Pick one or many PRs and either start a review (optionally using GitKraken's PR review tool) or kick off agents to address feedback — each PR gets its own Task.
+- **Repositories and folders.** Kepler creates a worktree for each repository, on a branch named from the task.
+- **Issues and pull requests.** Browse and search your connected providers, then attach one or more issues or PRs as context, to plan or implement an issue, review a PR, or address feedback.
+- **Files.** Upload files from your computer, or attach them by path.
+
+You can also start tasks from the command palette, from an issue or PR on the Dashboard's **Todo** view, or with **Automations**, which start tasks for you (see below).
+
+Already using another tool? **Import from another app** brings in your workspaces from Conductor, Orca, herdr, and Vibe Kanban as tasks, with their chats resumed. You'll find it in the File menu, and on the Tasks view while you have no tasks. Kepler also finds agent sessions you started in your own terminal, so you can continue them or adopt them into a task.
+
+### Agents
+
+Kepler works with **Claude Code**, **Codex**, **GitHub Copilot**, **Cursor**, **Antigravity**, **OpenCode**, **Pi**, **Auggie**, and **Grok Build**, and you can add your own as a **custom agent**. You choose the agent per task and per session. Most agents can run as a rich **Chat** or in a real **Terminal** inside Kepler.
+
+You can save an agent, model, mode, and effort as a **preset**, and manage MCP servers in **Settings › Agents**.
 
 ### Inside a Task
 
-Inside a Task you can talk to your agent, watch the diff form in real time, inspect changes, and commit.
+The task page is where the work happens. You open its parts as tabs, which you can drag into groups and splits:
 
-### Views
+- **Chat** — talk to your agents, review their plans, and answer permission requests.
+- **Changes** — watch the diff form, review and comment on lines, stage, commit, update your branch, and open pull requests.
+- **Files**, **Notes**, and **Resources** — browse the worktree, keep task notes, and manage the issues, PRs, repos, files, and links attached to the task.
+- **Terminal** — embedded terminals for running commands, debugging, or working outside the agent.
 
-The ADE gives you three ways to view your tasks, worktrees, and agent sessions — toggle between them at the top of the screen:
+### Dashboard
 
-- **List.** Tasks on the left, the active agent session in the middle, changes on the right. Best when you want to focus on one piece of work at a time.
-- **Kanban.** Organizes worktrees and their agents into a workflow — Exploration, In Development, Review, Done. Filter the board and interact with agents directly from their cards. Best when you're thinking about work in terms of where it is in your process.
-- **Console.** All active sessions at once in an exploded view with filters, so you can scan and interact with many agents in parallel. Best when you have a lot in flight and want to answer "what's everything doing right now?"
+The **Dashboard** is your overview of all your work. It runs on saved **views** that you name, reorder, and customize, each with its own layout, grouping, sort, filters, and search:
 
-All three views offer similar functionality — they're different lenses on the same underlying work, so you can pick the one that matches how you like to think.
+- **Tasks** — everything in flight, grouped by what needs your attention, progress stage, repository, activity, or your own task groups.
+- **Todo** — the pull requests and issues waiting on you across your connected providers, ready to turn into tasks.
+- **Agent Graph** — a live graph of what your agents are doing.
+
+Each view can be shown as a **List**, a **Board**, or a **Graph**. You can open tasks as preview panels next to the list, so you can watch and talk to many agents at once.
+
+### Automations and Actions
+
+- **Actions** are reusable prompts. Each one can use its own agent, and you can run it from anywhere in Kepler.
+- **Automations** watch GitHub or Jira for new activity that matches a query, or run on a schedule. Each run starts a task that runs an Action or your own prompt. Templates cover common jobs like reviewing pull requests that are waiting on you, or triaging new bugs.
+
+### Ask Kepler and the command palette
+
+**Ask Kepler** (Mod+L) is a side panel with a chat that knows what's on your screen. It can also change Dashboard views and settings, or draft an automation for you.
+
+The **command palette** (F1 or Cmd/Ctrl+Shift+P) finds tasks, files, commands, and Todo items.
 
 ## Setup & configuration
 
-### Repos directory and worktree paths
+### Integrations
 
-You can set your default repos directory and configure where new worktrees are created using relative paths in Settings. This is worth setting up early — it controls where all of your Task worktrees land on disk.
+Connect your code hosts and issue trackers in **Settings › Integrations**: GitHub, GitLab, Bitbucket, Azure DevOps (including their self-hosted editions), Jira, Linear, Trello, and Asana.
 
-### Terminals
+### Repositories and worktree folders
 
-You can open embedded terminals directly from any worktree to run commands, debug, or interact with the file system outside of the agent.
+Set your **Repositories folder** in **Settings › Repositories** and your **Worktrees folder** in **Settings › Tasks**. The worktrees folder controls where every task's worktree lands on disk, so it's worth setting up early. Repositories Kepler finds by scanning your repositories folder stay untrusted until you trust them.
 
-### Custom commands
+### Repository commands
 
-Create custom commands for each repo that run on demand or automatically when a new worktree is created. This is useful for bootstrapping worktrees — installing dependencies, running builds, starting test watchers, or anything else you'd normally do after checking out a fresh branch.
+Each repository can have its own **commands**, set up in its settings page under **Settings › Repositories**. Run them on demand from the **Run** menu, or have them run automatically when Kepler creates a new worktree. That's useful for bootstrapping worktrees: installing dependencies, running builds, starting test watchers, or anything else you'd normally do after checking out a fresh branch.
 
-### Local and remote environments
+To copy ignored files such as `.env` into new worktrees, list them in a `.worktreeinclude` file.
 
-By default the ADE works locally, but you can connect to remote environments via SSH. Look for the connection button in the top right corner of the app.
+### Remote environments and Remote Access
+
+By default Kepler runs agents on your own machine, but there are two ways to work remotely:
+
+- **Remote environments** (**Settings › Remote environments**) — run your agents on another machine, like a dev server or cloud VM, while you work from your own computer. Kepler installs itself on the remote machine over SSH. On Windows you can also use WSL.
+- **Remote Access** (**Settings › Remote Access**) — reach this machine from any browser or your phone, through a secure GitKraken relay.
 
 ## Filing an issue
 

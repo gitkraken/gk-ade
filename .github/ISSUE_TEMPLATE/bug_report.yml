@@ -1,0 +1,129 @@
+name: Bug report
+description: Something in Kepler is broken, crashes, gives the wrong result, or no longer works the way it used to.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please [search existing issues](https://github.com/gitkraken/gk-ade/issues?q=is%3Aissue) (open and closed) first — if it's already been reported, add a reaction or comment there instead.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the bug clearly and concisely.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Be as specific as you can — the more reliably we can reproduce it, the faster we can fix it.
+      placeholder: |
+        1. Create a task from a GitHub issue
+        2. Open the task and switch to the Changes tab
+        3. Click on ...
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: version
+    attributes:
+      label: Kepler version and system details
+      description: |
+        Open **About Kepler** (macOS: **Kepler › About Kepler**; Windows/Linux: **Help › About**), click **Copy details**, and paste the result here. It includes your Kepler version, release channel, and operating system.
+      placeholder: |
+        Kepler 0.19.0 (production)
+        OS: macOS 15.1 arm64
+        Runtime: Electron … · Chromium … · Node …
+      render: text
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Where was Kepler running?
+      description: Remote environments are set up in **Settings › Remote environments**; Remote Access is the browser/phone client set up in **Settings › Remote Access**.
+      options:
+        - Locally on this machine
+        - Remote environment over SSH (dev server, cloud VM, …)
+        - Remote environment in WSL
+        - Remote Access (browser or phone)
+        - Not sure
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which part of Kepler is affected? Select all that apply.
+      multiple: true
+      options:
+        - Dashboard (views, List / Board / Graph layouts)
+        - Task — Chat and agent sessions
+        - Task — Plan
+        - Task — Changes, commits, and pull requests
+        - Task — Files, Notes, or Resources
+        - Terminal
+        - Worktrees and branches
+        - Automations
+        - Actions
+        - Repository commands (Run menu)
+        - Ask Kepler
+        - Command palette and keyboard shortcuts
+        - Integrations (GitHub, GitLab, Bitbucket, Azure DevOps, Jira, Linear, …)
+        - Import from another app
+        - Remote environments
+        - Remote Access
+        - Dictation and Read aloud
+        - Notifications
+        - Account, sign-in, and onboarding
+        - Updates and installation
+        - Settings (other)
+        - Other
+
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Agent
+      description: If the bug involves an agent session, which agent were you using?
+      multiple: true
+      options:
+        - Claude Code
+        - Codex
+        - GitHub Copilot
+        - Cursor
+        - Antigravity
+        - OpenCode
+        - Pi
+        - Auggie
+        - Grok Build
+        - Custom agent
+        - Not applicable
+
+  - type: textarea
+    id: attachments
+    attributes:
+      label: Logs, screenshots, or recordings
+      description: |
+        To attach logs, go to **Settings › Help › Logs**, click **Save logs…**, and drag the resulting `kepler-logs-YYYY-MM-DD.zip` here. Screenshots and screen recordings are welcome too.
+
+        Logs can include file paths, repository names, and other details from your machine — please review them and remove anything sensitive before attaching.
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Anything else that might help us understand the problem.

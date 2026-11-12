@@ -1,0 +1,44 @@
+name: Feature request
+description: Something Kepler doesn't do yet, or a change to how it currently works.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the suggestion! Please [search existing issues](https://github.com/gitkraken/gk-ade/issues?q=is%3Aissue) (open and closed) first — if someone has already suggested it, add a reaction or comment there instead.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you trying to solve?
+      description: Describe the problem or the workflow you'd like to improve.
+      placeholder: When I have several agents running across tasks, I find it hard to ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: What would you like to see?
+      description: Your suggested solution, if you have one in mind.
+
+  - type: textarea
+    id: why
+    attributes:
+      label: Why does it matter?
+      description: Context that helps us understand the value — how often you hit this, what it would unlock, etc.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives or workarounds
+      description: Anything you've tried or considered instead.
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Mockups, screenshots, or links to similar features elsewhere.
